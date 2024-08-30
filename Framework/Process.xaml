@@ -4,7 +4,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>603,902</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>554,1016</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -27,6 +27,7 @@
       <x:String>UiPath.Activities.System.FileOperations</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>System.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -62,9 +63,21 @@
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="496,837" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="496,748" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_invoiceUrl" />
     </Sequence.Variables>
@@ -81,15 +94,18 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <Assign DisplayName="Assign Invoice Url from Queue item value to str_invoice" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign invoice URL from TransactionItem" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">
-          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">str_invoiceUrl</CSharpReference>
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">
+            <CSharpReference.Result>
+              <OutArgument x:TypeArguments="Location(x:String)" />
+            </CSharpReference.Result>str_invoiceUrl</CSharpReference>
         </OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">
             <CSharpValue.Result>
               <OutArgument x:TypeArguments="x:String" />
             </CSharpValue.Result>in_TransactionItem.SpecificContent["Invoice Url"].ToString()</CSharpValue>
@@ -106,7 +122,7 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <uasf:DownloadFileFromUrl ConflictResolution="Rename" ContinueOnError="{x:Null}" DisplayName="Download File from URL in var str_invoiceUrl" FileName="{x:Null}" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="DownloadFileFromUrl_1" ResponseAttachment="{x:Null}" Result="{x:Null}" Timeout="{x:Null}">
+    <uasf:DownloadFileFromUrl FileName="{x:Null}" ResponseAttachment="{x:Null}" Timeout="{x:Null}" ConflictResolution="Rename" DisplayName="Download File from URL in var str_invoiceUrl" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="DownloadFileFromUrl_1">
       <uasf:DownloadFileFromUrl.Url>
         <InArgument x:TypeArguments="x:String">
           <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">
@@ -116,6 +132,5 @@
         </InArgument>
       </uasf:DownloadFileFromUrl.Url>
     </uasf:DownloadFileFromUrl>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
   </Sequence>
 </Activity>
