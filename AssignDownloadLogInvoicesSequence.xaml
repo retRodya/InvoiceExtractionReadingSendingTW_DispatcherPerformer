@@ -108,7 +108,6 @@
         <Variable x:TypeArguments="x:String" Name="str_invoiceID" />
         <Variable x:TypeArguments="x:String" Name="str_invoiceDirectoryPath" />
         <Variable x:TypeArguments="x:String" Name="str_invoiceFileName" />
-        <Variable x:TypeArguments="x:String" Name="str_invoiceFilePath" />
         <Variable x:TypeArguments="x:String" Name="str_invoiceUrl" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
@@ -220,20 +219,14 @@
       <ui:LogMessage DisplayName="Log message with invoice file name" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:Object" />
-              </CSharpValue.Result>"str_invoiceFileName: " + out_str_invoiceFileName</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">"out_str_invoiceFileName: " + out_str_invoiceFileName</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
       <Assign DisplayName="Assign file path" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">
-            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">
-              <CSharpReference.Result>
-                <OutArgument x:TypeArguments="Location(x:String)" />
-              </CSharpReference.Result>str_invoiceFilePath</CSharpReference>
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">out_str_invoiceFilePath</CSharpReference>
           </OutArgument>
         </Assign.To>
         <Assign.Value>
@@ -248,10 +241,7 @@
       <ui:LogMessage DisplayName="Log invoice file path" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:Object" />
-              </CSharpValue.Result>"str_invoiceFilePath: " + str_invoiceFilePath</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">"out_str_invoiceFilePath: " + out_str_invoiceFilePath</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
@@ -298,7 +288,7 @@
       <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" DisplayName="Move invoice File to File Path (Invoices)" sap:VirtualizedContainerService.HintSize="434,191" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True">
         <ui:MoveFile.Destination>
           <InArgument x:TypeArguments="x:String">
-            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">str_invoiceFilePath</CSharpValue>
+            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">out_str_invoiceFilePath</CSharpValue>
           </InArgument>
         </ui:MoveFile.Destination>
         <ui:MoveFile.Path>
@@ -310,10 +300,7 @@
       <ui:LogMessage DisplayName="Log message with file movement details" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_29">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:Object" />
-              </CSharpValue.Result>out_str_invoiceFileName + " moved to: " + str_invoiceFilePath</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">out_str_invoiceFileName + " moved to: " + out_str_invoiceFilePath</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
