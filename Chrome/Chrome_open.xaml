@@ -3,7 +3,7 @@
     <x:Property Name="out_dt_invoicesData" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1214,3759</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>993,3779.0000000000005</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -46,6 +46,8 @@
       <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Globalization</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -107,9 +109,12 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Chrome_open" sap:VirtualizedContainerService.HintSize="654,3694" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Chrome_open" sap:VirtualizedContainerService.HintSize="654,3714" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_userInputDueDate" />
       <Variable x:TypeArguments="s:DateTime" Name="dateTime_userInputDueDate" />
@@ -120,47 +125,40 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message (&quot;In Chrome_open Sequence&quot;)" sap:VirtualizedContainerService.HintSize="592,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message (&quot;In Chrome_open Sequence&quot;)" sap:VirtualizedContainerService.HintSize="592,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"In Chrome_open Sequence"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="str_urlRpachallengeocr" CacheStrategy="None" DisplayName="Get Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="592,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="str_urlRpachallengeocr" CacheStrategy="None" DisplayName="Get Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="592,176" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">
           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">str_urlRpachallengeocr</CSharpReference>
         </OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:LogMessage DisplayName="Log Message (&quot;Asset str_urlRpachallengeocr recived&quot;)" sap:VirtualizedContainerService.HintSize="592,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message (&quot;Asset str_urlRpachallengeocr recived&quot;)" sap:VirtualizedContainerService.HintSize="592,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">"Asset str_urlRpachallengeocr recived: " + str_urlRpachallengeocr</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Automation Challenge - OCR" sap:VirtualizedContainerService.HintSize="592,871" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e38e2e60-506d-4254-803d-a7be69c028ed" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Automation Challenge - OCR" sap:VirtualizedContainerService.HintSize="592,875" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e38e2e60-506d-4254-803d-a7be69c028ed" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,622" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable">
-                <Variable.Default>
-                  <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">new System.Data.DataTable();</CSharpValue>
-                </Variable.Default>
-              </Variable>
-            </Sequence.Variables>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,625" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log message for Chrome url being opened" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace">
+            <ui:LogMessage DisplayName="Log message for Chrome url being opened" sap:VirtualizedContainerService.HintSize="354,177" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">
@@ -175,7 +173,20 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
-            <ui:LogMessage DisplayName="Log Message (&quot;out_dt_invoicesData exreacted: &quot; + dt_invoicesData)" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace">
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='#' ReferenceIdx='0' Name='#'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='ID' ReferenceIdx='1' Name='ID'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Due Date' ReferenceIdx='2' Name='Due Date'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='DateColumnFormat' Format='d-M-yyyy' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Invoice' ReferenceIdx='3' Name='Invoice' IsDeleted='true'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Invoice Url' ReferenceIdx='4' Name='Invoice Url'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataNextLink' /&gt;&#xD;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='#' attr='fulltext' /&gt;&lt;column name='ID' attr='fulltext' /&gt;&lt;column name='Due Date' attr='fulltext' /&gt;&lt;column name='Invoice' attr='fulltext' name2='Invoice Url' attr2='href' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="354,190" sap2010:WorkflowViewState.IdRef="NExtractData_1" InteractionMode="Simulate" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="e38e2e60-506d-4254-803d-a7be69c028ed" Version="V3">
+              <uix:NExtractData.DataTable>
+                <InOutArgument x:TypeArguments="sd:DataTable">
+                  <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">out_dt_invoicesData</CSharpReference>
+                </InOutArgument>
+              </uix:NExtractData.DataTable>
+              <uix:NExtractData.NextLink>
+                <uix:TargetAnchorable BrowserURL="https://rpachallengeocr.azurewebsites.net/" CVScreenId="5eade3fb-7164-4664-afa6-3ae719fc5558" CvTextArea="1494, 533, 28, 13" CvTextArgument="Next" CvType="Text" DesignTimeRectangle="1482, 526, 53, 32" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tableSandbox_next' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tableSandbox_next' tag='A' type='' class='paginate_button next' aaname='Next' check:innerText='Next' /&gt;" Guid="402fa8c2-259d-4767-8854-2732a9b92a83" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Challenge - OCR' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive" />
+              </uix:NExtractData.NextLink>
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable BrowserURL="https://rpachallengeocr.azurewebsites.net/" DesignTimeRectangle="820, 327, 938, 176" DesignTimeScaleFactor="0.8999999761581421" FullSelectorArgument="&lt;webctrl id='tableSandbox' tag='TABLE' /&gt;" Guid="a77955fd-6d86-4240-9991-2d784d403b4d" InformativeScreenshot="a49ac088101a3629d167901b180ccb5b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Challenge - OCR' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <ui:LogMessage DisplayName="Log Message (&quot;out_dt_invoicesData exreacted: &quot; + dt_invoicesData)" sap:VirtualizedContainerService.HintSize="354,168" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">"out_dt_invoicesData exreacted: " + out_dt_invoicesData</CSharpValue>
@@ -188,19 +199,6 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
-            <uix:NExtractData AppendResults="False" ContinueOnError="True" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='#' ReferenceIdx='0' Name='#'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='ID' ReferenceIdx='1' Name='ID'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Due Date' ReferenceIdx='2' Name='Due Date'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Invoice' ReferenceIdx='3' Name='Invoice' IsDeleted='true'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Invoice Url' ReferenceIdx='4' Name='Invoice Url'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataNextLink' /&gt;&#xD;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='#' attr='fulltext' /&gt;&lt;column name='ID' attr='fulltext' /&gt;&lt;column name='Due Date' attr='fulltext' /&gt;&lt;column name='Invoice' attr='fulltext' name2='Invoice Url' attr2='href' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="354,182" sap2010:WorkflowViewState.IdRef="NExtractData_1" InteractionMode="Simulate" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="e38e2e60-506d-4254-803d-a7be69c028ed" Version="V3">
-              <uix:NExtractData.DataTable>
-                <InOutArgument x:TypeArguments="sd:DataTable">
-                  <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">out_dt_invoicesData</CSharpReference>
-                </InOutArgument>
-              </uix:NExtractData.DataTable>
-              <uix:NExtractData.NextLink>
-                <uix:TargetAnchorable BrowserURL="https://rpachallengeocr.azurewebsites.net/" CVScreenId="5eade3fb-7164-4664-afa6-3ae719fc5558" CvTextArea="1494, 533, 28, 13" CvTextArgument="Next" CvType="Text" DesignTimeRectangle="1482, 526, 53, 32" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tableSandbox_next' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tableSandbox_next' tag='A' type='' class='paginate_button next' aaname='Next' check:innerText='Next' /&gt;" Guid="402fa8c2-259d-4767-8854-2732a9b92a83" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Challenge - OCR' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive" />
-              </uix:NExtractData.NextLink>
-              <uix:NExtractData.Target>
-                <uix:TargetAnchorable BrowserURL="https://rpachallengeocr.azurewebsites.net/" DesignTimeRectangle="607, 339, 1042, 195" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl id='tableSandbox' tag='TABLE' /&gt;" Guid="9814842b-0821-4983-acf1-b9785087b546" InformativeScreenshot="a49ac088101a3629d167901b180ccb5b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Challenge - OCR' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
-              </uix:NExtractData.Target>
-            </uix:NExtractData>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
@@ -214,14 +212,14 @@
         </uix:TargetApp>
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <Sequence DisplayName="Get, Parse, and Log Asset Conversion" sap:VirtualizedContainerService.HintSize="592,746" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Get, Parse, and Log Asset Conversion" sap:VirtualizedContainerService.HintSize="592,752" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="str_userInputDueDate" CacheStrategy="None" DisplayName="Get str_userInputDueDate Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="str_userInputDueDate" CacheStrategy="None" DisplayName="Get str_userInputDueDate Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="434,176" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
         <ui:GetRobotAsset.Value>
           <OutArgument x:TypeArguments="x:String">
             <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">str_userInputDueDate</CSharpReference>
@@ -234,7 +232,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:GetRobotAsset>
-      <ui:LogMessage DisplayName="Log Message (&quot;Asset str_userInputDueDate recived: &quot; +str_userInputDueDate)" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace">
+      <ui:LogMessage DisplayName="Log Message (&quot;Asset str_userInputDueDate recived: &quot; +str_userInputDueDate)" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
             <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">
@@ -250,7 +248,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
-      <Assign DisplayName="Parse str_userInputDueDate into DateTime type Assign" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign DisplayName="Parse str_userInputDueDate into DateTime type Assign" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="s:DateTime">
             <CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">dateTime_userInputDueDate</CSharpReference>
@@ -268,7 +266,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <ui:LogMessage DisplayName=" Log Message (&quot;str_userInputDueDate parsed into dateTime_userInputDueDate: &quot; + dateTime_userInputDueDate)" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace">
+      <ui:LogMessage DisplayName=" Log Message (&quot;str_userInputDueDate parsed into dateTime_userInputDueDate: &quot; + dateTime_userInputDueDate)" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
             <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">"str_userInputDueDate parsed into dateTime_userInputDueDate: " + dateTime_userInputDueDate</CSharpValue>
@@ -282,32 +280,32 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
     </Sequence>
-    <Sequence DisplayName="Filter out_dt_invoicesData by due date and log message" sap:VirtualizedContainerService.HintSize="592,398" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Filter out_dt_invoicesData by due date and log message" sap:VirtualizedContainerService.HintSize="592,401" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Filtering(assigning) out_dt_invoicesData rows by dateTime_userInputDueDate" sap:VirtualizedContainerService.HintSize="439,114" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign DisplayName="Assign filtered invoices data based on due date condition" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="sd:DataTable">
-            <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">out_dt_invoicesData</CSharpReference>
+            <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">
+              <CSharpReference.Result>
+                <OutArgument x:TypeArguments="Location(sd:DataTable)" />
+              </CSharpReference.Result>out_dt_invoicesData</CSharpReference>
           </OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="sd:DataTable">
-            <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">out_dt_invoicesData.Select().Where(row =&gt; Convert.ToDateTime(row["Due Date"]) &lt;= dateTime_userInputDueDate).CopyToDataTable()</CSharpValue>
+            <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">
+              <CSharpValue.Result>
+                <OutArgument x:TypeArguments="sd:DataTable" />
+              </CSharpValue.Result>out_dt_invoicesData.Select().Where(row =&gt; Convert.ToDateTime(row["Due Date"]) &lt;= dateTime_userInputDueDate).CopyToDataTable()</CSharpValue>
           </InArgument>
         </Assign.Value>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <ui:LogMessage DisplayName="Log Message (&quot;Filtering(assigning) out_dt_invoicesData rows.&quot;)" sap:VirtualizedContainerService.HintSize="439,164" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace">
+      <ui:LogMessage DisplayName="Log Message (&quot;Filtering(assigning) out_dt_invoicesData rows.&quot;)" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
             <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">"out_dt_invoicesData rows filtered"</CSharpValue>
@@ -321,7 +319,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
     </Sequence>
-    <Sequence DisplayName="Iterate rows, add queue items, and log messages in workflow" sap:VirtualizedContainerService.HintSize="592,1070" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Iterate rows, add queue items, and log messages in workflow" sap:VirtualizedContainerService.HintSize="592,1072" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="int_dataRowCounter" />
       </Sequence.Variables>
@@ -331,7 +329,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="Iterate through rows and add queue items" sap:VirtualizedContainerService.HintSize="530,793" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="Iterate through rows and add queue items" sap:VirtualizedContainerService.HintSize="530,795" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>

@@ -10,7 +10,7 @@
     </InArgument>
   </this:InitAllSettings.in_ConfigSheets>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1233,2447</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1214,1179</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -96,7 +96,10 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project. &#xA;Settings and constants are read from the local configuration file, and assets are fetched from Orchestrator. &#xA;Asset values overwrite settings and constant values if they are defined with the same name." DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="828,2382" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project. &#xA;Settings and constants are read from the local configuration file, and assets are fetched from Orchestrator. &#xA;Asset values overwrite settings and constant values if they are defined with the same name." DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="574,1114" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_userInputDueDate" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -104,22 +107,31 @@
         <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message (Initialize All Settings)" sap:VirtualizedContainerService.HintSize="766,57" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message (Initialize All Settings)" sap:VirtualizedContainerService.HintSize="512,57" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">"Initializing settings..."</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="x:Object" />
+            </CSharpValue.Result>"Initializing settings..."</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <Assign DisplayName="Assign out_Config (initialization)" sap:VirtualizedContainerService.HintSize="766,57" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign out_Config (initialization)" sap:VirtualizedContainerService.HintSize="512,57" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">
-          <CSharpReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">out_Config</CSharpReference>
+          <CSharpReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">
+            <CSharpReference.Result>
+              <OutArgument x:TypeArguments="Location(scg:Dictionary(x:String, x:Object))" />
+            </CSharpReference.Result>out_Config</CSharpReference>
         </OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">
-          <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">new Dictionary&lt;String, Object&gt;()</CSharpValue>
+          <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+            </CSharpValue.Result>new Dictionary&lt;String, Object&gt;()</CSharpValue>
         </InArgument>
       </Assign.Value>
       <sap:WorkflowViewStateService.ViewState>
@@ -128,7 +140,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each configuration sheet" sap:VirtualizedContainerService.HintSize="766,57" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each configuration sheet" sap:VirtualizedContainerService.HintSize="512,57" sap2010:WorkflowViewState.IdRef="ForEach`1_1" MaxIterations="{x:Null}">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
@@ -145,24 +157,33 @@
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DisplayName="Read range (Settings and Constants sheets)" sap:VirtualizedContainerService.HintSize="368,120" sap2010:WorkflowViewState.IdRef="ReadRange_1">
+            <ui:ReadRange AddHeaders="True" DisplayName="Read range (Settings and Constants sheets)" sap:VirtualizedContainerService.HintSize="368,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" Password="{x:Null}" Range="{x:Null}">
               <ui:ReadRange.DataTable>
                 <OutArgument x:TypeArguments="sd:DataTable">
-                  <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">dt_SettingsAndConstants</CSharpReference>
+                  <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">
+                    <CSharpReference.Result>
+                      <OutArgument x:TypeArguments="Location(sd:DataTable)" />
+                    </CSharpReference.Result>dt_SettingsAndConstants</CSharpReference>
                 </OutArgument>
               </ui:ReadRange.DataTable>
               <ui:ReadRange.SheetName>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">Sheet</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">
+                    <CSharpValue.Result>
+                      <OutArgument x:TypeArguments="x:String" />
+                    </CSharpValue.Result>Sheet</CSharpValue>
                 </InArgument>
               </ui:ReadRange.SheetName>
               <ui:ReadRange.WorkbookPath>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">in_ConfigFile</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">
+                    <CSharpValue.Result>
+                      <OutArgument x:TypeArguments="x:String" />
+                    </CSharpValue.Result>in_ConfigFile</CSharpValue>
                 </InArgument>
               </ui:ReadRange.WorkbookPath>
             </ui:ReadRange>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For each configuration row" sap:VirtualizedContainerService.HintSize="368,279" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For each configuration row" sap:VirtualizedContainerService.HintSize="368,279" sap2010:WorkflowViewState.IdRef="ForEachRow_1" MaxIterations="{x:Null}" Values="{x:Null}">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
@@ -171,7 +192,10 @@
                   <If sap2010:Annotation.AnnotationText="Read non-empty rows in the sheet." DisplayName="If configuration row is not empty" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Condition>
                       <InArgument x:TypeArguments="x:Boolean">
-                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">!string.IsNullOrWhiteSpace(Row["Name"].ToString().Trim())</CSharpValue>
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">
+                          <CSharpValue.Result>
+                            <OutArgument x:TypeArguments="x:Boolean" />
+                          </CSharpValue.Result>!string.IsNullOrWhiteSpace(Row["Name"].ToString().Trim())</CSharpValue>
                       </InArgument>
                     </If.Condition>
                     <sap:WorkflowViewStateService.ViewState>
@@ -185,12 +209,18 @@
                       <Assign DisplayName="Add Config key/value pair" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Object">
-                            <CSharpReference x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">out_Config[Row["Name"].ToString().Trim()]</CSharpReference>
+                            <CSharpReference x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">
+                              <CSharpReference.Result>
+                                <OutArgument x:TypeArguments="Location(x:Object)" />
+                              </CSharpReference.Result>out_Config[Row["Name"].ToString().Trim()]</CSharpReference>
                           </OutArgument>
                         </Assign.To>
                         <Assign.Value>
                           <InArgument x:TypeArguments="x:Object">
-                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">Row["Value"]</CSharpValue>
+                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">
+                              <CSharpValue.Result>
+                                <OutArgument x:TypeArguments="x:Object" />
+                              </CSharpValue.Result>Row["Value"]</CSharpValue>
                           </InArgument>
                         </Assign.Value>
                       </Assign>
@@ -209,7 +239,10 @@
               </ui:ForEachRow.Body>
               <ui:ForEachRow.DataTable>
                 <InArgument x:TypeArguments="sd:DataTable">
-                  <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">dt_SettingsAndConstants</CSharpValue>
+                  <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">
+                    <CSharpValue.Result>
+                      <OutArgument x:TypeArguments="sd:DataTable" />
+                    </CSharpValue.Result>dt_SettingsAndConstants</CSharpValue>
                 </InArgument>
               </ui:ForEachRow.DataTable>
             </ui:ForEachRow>
@@ -218,7 +251,10 @@
       </ui:ForEach.Body>
       <ui:ForEach.Values>
         <InArgument x:TypeArguments="sc:IEnumerable">
-          <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">in_ConfigSheets</CSharpValue>
+          <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="sc:IEnumerable" />
+            </CSharpValue.Result>in_ConfigSheets</CSharpValue>
         </InArgument>
       </ui:ForEach.Values>
       <sap:WorkflowViewStateService.ViewState>
@@ -228,7 +264,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <TryCatch DisplayName="Try initializing assets" sap:VirtualizedContainerService.HintSize="766,57" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Try initializing assets" sap:VirtualizedContainerService.HintSize="512,57" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -247,10 +283,13 @@
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadRange Range="{x:Null}" AddHeaders="True" DisplayName="Read range (Assets sheet)" sap:VirtualizedContainerService.HintSize="568,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Assets">
+          <ui:ReadRange AddHeaders="True" DisplayName="Read range (Assets sheet)" sap:VirtualizedContainerService.HintSize="568,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" Password="{x:Null}" Range="{x:Null}" SheetName="Assets">
             <ui:ReadRange.DataTable>
               <OutArgument x:TypeArguments="sd:DataTable">
-                <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">dt_Assets</CSharpReference>
+                <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">
+                  <CSharpReference.Result>
+                    <OutArgument x:TypeArguments="Location(sd:DataTable)" />
+                  </CSharpReference.Result>dt_Assets</CSharpReference>
               </OutArgument>
             </ui:ReadRange.DataTable>
             <sap:WorkflowViewStateService.ViewState>
@@ -260,7 +299,10 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:ReadRange.WorkbookPath>
               <InArgument x:TypeArguments="x:String">
-                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">in_ConfigFile</CSharpValue>
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">
+                  <CSharpValue.Result>
+                    <OutArgument x:TypeArguments="x:String" />
+                  </CSharpValue.Result>in_ConfigFile</CSharpValue>
               </InArgument>
             </ui:ReadRange.WorkbookPath>
           </ui:ReadRange>
@@ -290,7 +332,10 @@
                       <ui:GetRobotAsset TimeoutMS="{x:Null}" CacheStrategy="None" DisplayName="Get Orchestrator asset" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
                         <ui:GetRobotAsset.AssetName>
                           <InArgument x:TypeArguments="x:String">
-                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">Row["Asset"].ToString()</CSharpValue>
+                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">
+                              <CSharpValue.Result>
+                                <OutArgument x:TypeArguments="x:String" />
+                              </CSharpValue.Result>Row["Asset"].ToString()</CSharpValue>
                           </InArgument>
                         </ui:GetRobotAsset.AssetName>
                         <ui:GetRobotAsset.FolderPath>
@@ -300,7 +345,10 @@
                         </ui:GetRobotAsset.FolderPath>
                         <ui:GetRobotAsset.Value>
                           <OutArgument x:TypeArguments="x:Object">
-                            <CSharpReference x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">AssetValue</CSharpReference>
+                            <CSharpReference x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">
+                              <CSharpReference.Result>
+                                <OutArgument x:TypeArguments="Location(x:Object)" />
+                              </CSharpReference.Result>AssetValue</CSharpReference>
                           </OutArgument>
                         </ui:GetRobotAsset.Value>
                       </ui:GetRobotAsset>
@@ -359,7 +407,10 @@
             </ui:ForEachRow.Body>
             <ui:ForEachRow.DataTable>
               <InArgument x:TypeArguments="sd:DataTable">
-                <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">dt_Assets</CSharpValue>
+                <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">
+                  <CSharpValue.Result>
+                    <OutArgument x:TypeArguments="sd:DataTable" />
+                  </CSharpValue.Result>dt_Assets</CSharpValue>
               </InArgument>
             </ui:ForEachRow.DataTable>
             <sap:WorkflowViewStateService.ViewState>
@@ -388,9 +439,8 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Sequence DisplayName="Set/Get Orchestrator Assets Sequence" sap:VirtualizedContainerService.HintSize="766,2009" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Sequence DisplayName="Set/Get Orchestrator Assets Sequence" sap:VirtualizedContainerService.HintSize="512,726" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Name="str_userInputDueDate" />
         <Variable x:TypeArguments="s:DateTime" Name="dateTime_userInputDueDate" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
@@ -399,7 +449,7 @@
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="DueDate input Sequence" sap:VirtualizedContainerService.HintSize="704,1898" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <Sequence DisplayName="DueDate input Sequence" sap:VirtualizedContainerService.HintSize="450,615" sap2010:WorkflowViewState.IdRef="Sequence_7">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Boolean" Name="b_isDueDateValid" />
         </Sequence.Variables>
@@ -409,7 +459,7 @@
             <x:Boolean x:Key="IsPinned">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While users input is dd-mm-yyyy format" sap:VirtualizedContainerService.HintSize="642,1397" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_3">
+        <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While users input is dd-mm-yyyy format" sap:VirtualizedContainerService.HintSize="388,57" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_5">
           <ui:InterruptibleDoWhile.Body>
             <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="608,1251" sap2010:WorkflowViewState.IdRef="Sequence_8">
               <sap:WorkflowViewStateService.ViewState>
@@ -418,15 +468,18 @@
                   <x:Boolean x:Key="IsPinned">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="User Inputs due date" sap:VirtualizedContainerService.HintSize="546,271" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Title="Enter Due Date">
+              <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="User Inputs due date" sap:VirtualizedContainerService.HintSize="546,271" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Title="Enter Due Date">
                 <ui:InputDialog.Label>
                   <InArgument x:TypeArguments="x:String">
-                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_45">"Enter due Date in exact \"dd-mM-yyyy\" format."</CSharpValue>
+                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_46">
+                      <CSharpValue.Result>
+                        <OutArgument x:TypeArguments="x:String" />
+                      </CSharpValue.Result>"Enter due Date in exact \"dd-mM-yyyy\" format."</CSharpValue>
                   </InArgument>
                 </ui:InputDialog.Label>
                 <ui:InputDialog.Result>
                   <OutArgument x:TypeArguments="x:String">
-                    <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">str_userInputDueDate</CSharpReference>
+                    <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">str_userInputDueDate</CSharpReference>
                   </OutArgument>
                 </ui:InputDialog.Result>
                 <sap:WorkflowViewStateService.ViewState>
@@ -483,7 +536,7 @@
                         <x:Boolean x:Key="IsPinned">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="450,117" sap2010:WorkflowViewState.IdRef="MessageBox_1" TopMost="{x:Null}">
+                    <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="450,117" sap2010:WorkflowViewState.IdRef="MessageBox_1">
                       <ui:MessageBox.ChosenButton>
                         <OutArgument x:TypeArguments="x:String">
                           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_15">
@@ -538,7 +591,7 @@
                               <x:Boolean x:Key="IsPinned">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <TerminateWorkflow DisplayName="Terminate Workflow if the User chose not to try again.&quot;" Exception="{x:Null}" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="Аfter entering an incorrect date format, the User chose not to try again.">
+                          <TerminateWorkflow DisplayName="Terminate Workflow if the User chose not to try again.&quot;" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="Аfter entering an incorrect date format, the User chose not to try again.">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsPinned">True</x:Boolean>
@@ -568,11 +621,47 @@
           </ui:InterruptibleDoWhile.Condition>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:InterruptibleDoWhile>
-        <ui:SetAsset TimeoutMS="{x:Null}" AssetName="str_userInputDueDate" DisplayName="Set str_userInputDueDate Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="642,226" sap2010:WorkflowViewState.IdRef="SetAsset_1">
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,57" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,350" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="User Inputs due date" sap:VirtualizedContainerService.HintSize="354,262" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Title="Enter Due Date">
+                <ui:InputDialog.Label>
+                  <InArgument x:TypeArguments="x:String">
+                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48">"Enter due Date in exact \"dd-MM-yyyy\" format."</CSharpValue>
+                  </InArgument>
+                </ui:InputDialog.Label>
+                <ui:InputDialog.Result>
+                  <OutArgument x:TypeArguments="x:String">
+                    <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">str_userInputDueDate</CSharpReference>
+                  </OutArgument>
+                </ui:InputDialog.Result>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InputDialog>
+            </Sequence>
+          </ui:CommentOut.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:CommentOut>
+        <ui:SetAsset TimeoutMS="{x:Null}" AssetName="str_userInputDueDate" DisplayName="Set str_userInputDueDate Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="388,226" sap2010:WorkflowViewState.IdRef="SetAsset_1">
           <ui:SetAsset.Value>
             <InArgument x:TypeArguments="x:Object">
               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">str_userInputDueDate</CSharpValue>
@@ -584,7 +673,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:SetAsset>
-        <ui:LogMessage DisplayName="Log Message (&quot;Asset str_userInputDueDate setted: &quot; + str_userInputDueDate)" sap:VirtualizedContainerService.HintSize="642,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace">
+        <ui:LogMessage DisplayName="Log Message (&quot;Asset str_userInputDueDate setted: &quot; + str_userInputDueDate)" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace">
           <ui:LogMessage.Message>
             <InArgument x:TypeArguments="x:Object">
               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">"Asset str_userInputDueDate setted: " + str_userInputDueDate</CSharpValue>
