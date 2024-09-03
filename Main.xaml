@@ -77,7 +77,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <StateMachine InitialState="{x:Reference __ReferenceID0}" sap2010:Annotation.AnnotationText="[InvoiceExtractionReadingSendingTW_DispatcherPerformer]&#xA;[InvoiceExtractionReadingSendingTW DispatcherPerformer]&#xA;[@retRodya. Chrome]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="645,424" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID0}" sap2010:Annotation.AnnotationText="[InvoiceExtractionReadingSendingTW_DispatcherPerformer]&#xA;[InvoiceExtractionReadingSendingTW DispatcherPerformer]&#xA;[@retRodya. Chrome]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1139,811" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -706,9 +706,7 @@
                                   <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceFileName" />
                                   <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceFilePath" />
                                   <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceDirectoryPath" />
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_invoiceMerge" />
                                   <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_OCRExractionResult" />
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_invoiceDataExtractionScope" />
                                   <InArgument x:TypeArguments="sd:DataSet" x:Key="in_ds_invoiceDataExtractionScope" />
                                 </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
