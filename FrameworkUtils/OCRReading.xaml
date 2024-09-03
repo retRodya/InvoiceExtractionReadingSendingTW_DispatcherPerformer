@@ -5,7 +5,7 @@
     <x:Property Name="out_ds_invoiceDataExtractionScope" Type="OutArgument(sd:DataSet)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1227,2721</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1227,2894</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -130,15 +130,17 @@
       <AssemblyReference>UiPath.OmniPage.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="602,2656" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap:VirtualizedContainerService.HintSize="602,2829" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="OCRReading Sequence" sap:VirtualizedContainerService.HintSize="540,2568" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="OCRReading Sequence" sap:VirtualizedContainerService.HintSize="540,2741" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="str_textDD" />
         <Variable x:TypeArguments="p2:Document" Name="doc_objectModelDD" />
@@ -153,6 +155,16 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log message In OCRReading sequence" sap:VirtualizedContainerService.HintSize="478,173" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info">
+        <ui:LogMessage.Message>
+          <InArgument x:TypeArguments="x:Object">
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_99">
+              <CSharpValue.Result>
+                <OutArgument x:TypeArguments="x:Object" />
+              </CSharpValue.Result>"In OCRReading Sequence"</CSharpValue>
+          </InArgument>
+        </ui:LogMessage.Message>
+      </ui:LogMessage>
       <p:LoadTaxonomy DisplayName="Load Taxonomy for Document Processing" sap:VirtualizedContainerService.HintSize="478,136" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1">
         <p:LoadTaxonomy.Taxonomy>
           <OutArgument x:TypeArguments="p1:DocumentTaxonomy">
@@ -166,10 +178,7 @@
       <ui:LogMessage DisplayName="Log message with taxonomy process and invoice file name" sap:VirtualizedContainerService.HintSize="478,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:Object" />
-              </CSharpValue.Result>"Taxonomy process with: " + in_str_invoiceFileName</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_100">"Taxonomy process with: " + in_str_invoiceFileName + " ended"</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
@@ -445,7 +454,7 @@
       <ui:LogMessage DisplayName="Log dataset invoice data extraction scope" sap:VirtualizedContainerService.HintSize="478,164" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_87">"extrRes_invoiceDataExtractionScope exported: " + ds_invoiceDataExtractionScope</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_101">"extrRes_invoiceDataExtractionScope exported in ds_invoiceDataExtractionScope"</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
