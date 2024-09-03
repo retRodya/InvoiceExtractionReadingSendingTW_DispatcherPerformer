@@ -3,9 +3,10 @@
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="out_str_invoiceFileName" Type="OutArgument(x:String)" />
     <x:Property Name="out_str_invoiceFilePath" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_invoiceDirectoryPath" Type="OutArgument(x:String)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1253,2807</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1227,2807</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -106,7 +107,6 @@
     <Sequence DisplayName="Assign, Download, Log Invoices Sequence" sap:VirtualizedContainerService.HintSize="496,2654" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="str_invoiceID" />
-        <Variable x:TypeArguments="x:String" Name="str_invoiceDirectoryPath" />
         <Variable x:TypeArguments="x:String" Name="str_invoiceFileName" />
         <Variable x:TypeArguments="x:String" Name="str_invoiceUrl" />
       </Sequence.Variables>
@@ -176,25 +176,19 @@
       <Assign DisplayName="Assign directory path" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">
-            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">
-              <CSharpReference.Result>
-                <OutArgument x:TypeArguments="Location(x:String)" />
-              </CSharpReference.Result>str_invoiceDirectoryPath</CSharpReference>
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">out_str_invoiceDirectoryPath</CSharpReference>
           </OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="x:String">
-            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">Path.Combine(Environment.CurrentDirectory, "Invoices")</CSharpValue>
+            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">Path.Combine(Environment.CurrentDirectory, "Invoices")</CSharpValue>
           </InArgument>
         </Assign.Value>
       </Assign>
       <ui:LogMessage DisplayName="Log message with current invoice directory path" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:Object" />
-              </CSharpValue.Result>"str_invoiceCurrentDirectory: " + str_invoiceDirectoryPath</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">"out_str_invoiceCurrentDirectory: " + out_str_invoiceDirectoryPath</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
@@ -231,10 +225,7 @@
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="x:String">
-            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:String" />
-              </CSharpValue.Result>Path.Combine(str_invoiceDirectoryPath, out_str_invoiceFileName)</CSharpValue>
+            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">Path.Combine(out_str_invoiceDirectoryPath, out_str_invoiceFileName)</CSharpValue>
           </InArgument>
         </Assign.Value>
       </Assign>
@@ -268,20 +259,14 @@
       <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create a folder at a specified path" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="CreateDirectory_1">
         <ui:CreateDirectory.Path>
           <InArgument x:TypeArguments="x:String">
-            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:String" />
-              </CSharpValue.Result>str_invoiceDirectoryPath</CSharpValue>
+            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">out_str_invoiceDirectoryPath</CSharpValue>
           </InArgument>
         </ui:CreateDirectory.Path>
       </ui:CreateDirectory>
       <ui:LogMessage DisplayName="Log message with invoice directory path" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:Object" />
-              </CSharpValue.Result>"str_invoiceDirectoryPath created: " + str_invoiceDirectoryPath</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">"out_str_invoiceDirectoryPath created: " + out_str_invoiceDirectoryPath</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
