@@ -6,7 +6,7 @@
     <x:Property Name="out_str_invoiceDirectoryPath" Type="OutArgument(x:String)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1227,2807</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1079,2807</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -236,7 +236,12 @@
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
-      <uasf:DownloadFileFromUrl FileName="{x:Null}" ResponseAttachment="{x:Null}" Timeout="{x:Null}" ConflictResolution="Rename" DisplayName="Download File from URL in var str_invoiceUrl" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="DownloadFileFromUrl_1">
+      <uasf:DownloadFileFromUrl FileName="{x:Null}" ResponseAttachment="{x:Null}" Timeout="{x:Null}" DisplayName="Download File from URL in var str_invoiceUrl" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="DownloadFileFromUrl_1">
+        <uasf:DownloadFileFromUrl.ConflictResolution>
+          <InArgument x:TypeArguments="uasf:FileConflictBehavior">
+            <CSharpValue x:TypeArguments="uasf:FileConflictBehavior" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">UiPath.Activities.System.FileOperations.FileConflictBehavior.Replace</CSharpValue>
+          </InArgument>
+        </uasf:DownloadFileFromUrl.ConflictResolution>
         <uasf:DownloadFileFromUrl.Url>
           <InArgument x:TypeArguments="x:String">
             <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">
@@ -249,10 +254,7 @@
       <ui:LogMessage DisplayName="Log message with downloaded invoice URL" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">
-              <CSharpValue.Result>
-                <OutArgument x:TypeArguments="x:Object" />
-              </CSharpValue.Result>"downloaded: " + str_invoiceUrl</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_41">"Invoice downloaded: " + str_invoiceUrl</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
@@ -285,7 +287,7 @@
       <ui:LogMessage DisplayName="Log message with file movement details" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">out_str_invoiceFileName + " moved to: " + out_str_invoiceFilePath</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_42">out_str_invoiceFileName + " moved to: " + out_str_invoiceDirectoryPath</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>

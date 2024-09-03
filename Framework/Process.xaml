@@ -1,12 +1,11 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
-    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_str_invoiceFileName" Type="InArgument(x:String)" />
     <x:Property Name="in_str_invoiceFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_str_invoiceDirectoryPath" Type="InArgument(x:String)" />
-    <x:Property Name="in_dt_invoiceMerge" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_dataSet_invoiceDataExtractionScope" Type="InArgument(sd:DataSet)" />
+    <x:Property Name="out_dt_OCRExractionResult" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_ds_invoiceDataExtractionScope" Type="InArgument(sd:DataSet)" />
   </x:Members>
   <this:Process.in_str_invoiceFileName>
     <InArgument x:TypeArguments="x:String" />
@@ -14,14 +13,11 @@
   <this:Process.in_str_invoiceFilePath>
     <InArgument x:TypeArguments="x:String" />
   </this:Process.in_str_invoiceFilePath>
-  <this:Process.in_dt_invoiceMerge>
-    <InArgument x:TypeArguments="sd:DataTable" />
-  </this:Process.in_dt_invoiceMerge>
-  <this:Process.in_dataSet_invoiceDataExtractionScope>
+  <this:Process.in_ds_invoiceDataExtractionScope>
     <InArgument x:TypeArguments="sd:DataSet" />
-  </this:Process.in_dataSet_invoiceDataExtractionScope>
+  </this:Process.in_ds_invoiceDataExtractionScope>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1227,665</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1227,1822</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -154,10 +150,14 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="574,1330" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="416,966" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_invoiceUrl" />
       <Variable x:TypeArguments="p:DocumentTaxonomy" Name="docTax_invoiceTaxonomy" />
+      <Variable x:TypeArguments="x:String" Name="str_invoiceFileName" />
+      <Variable x:TypeArguments="x:String" Name="str_invoiceFilePath" />
+      <Variable x:TypeArguments="x:String" Name="str_invoiceDirectoryPath" />
+      <Variable x:TypeArguments="sd:DataSet" Name="ds_invoiceDataExtractionScope" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -165,92 +165,51 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="512,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"Started Process"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AssignDownloadLogInvoicesSequence Workflow" sap:VirtualizedContainerService.HintSize="512,204" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\\AssignDownloadLogInvoicesSequence.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AssignDownloadLogInvoicesSequence Workflow" sap:VirtualizedContainerService.HintSize="354,204" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="FrameworkUtils\\AssignDownloadLogInvoicesSequence.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
           <CSharpValue x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">in_TransactionItem</CSharpValue>
         </InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_str_invoiceFileName">
-          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">in_str_invoiceFileName</CSharpReference>
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_43">str_invoiceFileName</CSharpReference>
         </OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_str_invoiceFilePath">
-          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">in_str_invoiceFilePath</CSharpReference>
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_44">str_invoiceFilePath</CSharpReference>
         </OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_str_invoiceDirectoryPath">
-          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_32">in_str_invoiceDirectoryPath</CSharpReference>
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_45">str_invoiceDirectoryPath</CSharpReference>
         </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OCR Reading Sequence Workflow" sap:VirtualizedContainerService.HintSize="512,204" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="OCRReadingSequence.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OCR Reading Sequence Workflow" sap:VirtualizedContainerService.HintSize="354,204" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FrameworkUtils\\OCRReadingSequence.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="p:DocumentTaxonomy" x:Key="docTax_invoiceTaxonomy">
-          <CSharpReference x:TypeArguments="p:DocumentTaxonomy" sap2010:WorkflowViewState.IdRef="CSharpReference`1_33">
-            <CSharpReference.Result>
-              <OutArgument x:TypeArguments="Location(p:DocumentTaxonomy)" />
-            </CSharpReference.Result>docTax_invoiceTaxonomy</CSharpReference>
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-          <CSharpReference x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">
-            <CSharpReference.Result>
-              <OutArgument x:TypeArguments="Location(ui:QueueItem)" />
-            </CSharpReference.Result>in_TransactionItem</CSharpReference>
-        </InOutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceFileName">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_78">
-            <CSharpValue.Result>
-              <OutArgument x:TypeArguments="x:String" />
-            </CSharpValue.Result>in_str_invoiceFileName</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_93">str_invoiceFileName</CSharpValue>
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceFilePath">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_79">
-            <CSharpValue.Result>
-              <OutArgument x:TypeArguments="x:String" />
-            </CSharpValue.Result>in_str_invoiceFilePath</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_94">str_invoiceFilePath</CSharpValue>
         </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_invoiceMerge">
-          <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_36">in_dt_invoiceMerge</CSharpReference>
-        </OutArgument>
-        <OutArgument x:TypeArguments="sd:DataSet" x:Key="out_dataSet_invoiceDataExtractionScope">
-          <CSharpReference x:TypeArguments="sd:DataSet" sap2010:WorkflowViewState.IdRef="CSharpReference`1_37">in_dataSet_invoiceDataExtractionScope</CSharpReference>
+        <OutArgument x:TypeArguments="sd:DataSet" x:Key="out_ds_invoiceDataExtractionScope">
+          <CSharpReference x:TypeArguments="sd:DataSet" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">ds_invoiceDataExtractionScope</CSharpReference>
         </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Sequence DisplayName="BuildExcelTable Sequence" sap:VirtualizedContainerService.HintSize="512,574" sap2010:WorkflowViewState.IdRef="Sequence_9">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Trace">
-        <ui:LogMessage.Message>
-          <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_81">"In BuildExcelTable Sequence"</CSharpValue>
-          </InArgument>
-        </ui:LogMessage.Message>
-      </ui:LogMessage>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="450,290" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-        <ui:ForEachRow.Body>
-          <ActivityAction x:TypeArguments="sd:DataRow">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-            </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,103" sap2010:WorkflowViewState.IdRef="Sequence_10">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </Sequence>
-          </ActivityAction>
-        </ui:ForEachRow.Body>
-      </ui:ForEachRow>
-    </Sequence>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke BuildExcelTableSequence workflow" sap:VirtualizedContainerService.HintSize="354,195" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="FrameworkUtils\\BuildExcelTableSequence.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataSet" x:Key="in_ds_invoiceDataExtractionScope">
+          <CSharpValue x:TypeArguments="sd:DataSet" sap2010:WorkflowViewState.IdRef="CSharpValue`1_95">ds_invoiceDataExtractionScope</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceFileName">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_96">str_invoiceFileName</CSharpValue>
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>

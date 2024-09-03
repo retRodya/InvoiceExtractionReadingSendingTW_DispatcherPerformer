@@ -707,6 +707,9 @@
                                   <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceFilePath" />
                                   <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceDirectoryPath" />
                                   <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_invoiceMerge" />
+                                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_OCRExractionResult" />
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_invoiceDataExtractionScope" />
+                                  <InArgument x:TypeArguments="sd:DataSet" x:Key="in_ds_invoiceDataExtractionScope" />
                                 </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
