@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Emailing" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1227,1625" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugage="clr-namespace:UiPath.GSuite.Activities.Gmail.Enums;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Emailing" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1227,2037" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugage="clr-namespace:UiPath.GSuite.Activities.Gmail.Enums;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -109,7 +109,7 @@
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EmailingOCRExtractionResult" sap:VirtualizedContainerService.HintSize="416,1560" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="EmailingOCRExtractionResult" sap:VirtualizedContainerService.HintSize="496,1972" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_emailPrimaryRecepient" />
       <Variable x:TypeArguments="x:String" Name="str_userInputDueDate" />
@@ -119,21 +119,21 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message in emailing sequence" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+    <ui:LogMessage DisplayName="Log message in emailing sequence" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">"In EmailingOCRExtractionResult sequence"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="str_userInputDueDate" CacheStrategy="None" DisplayName="Get Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="str_userInputDueDate" CacheStrategy="None" DisplayName="Get Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">
           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">str_userInputDueDate</CSharpReference>
         </OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:LogMessage DisplayName="Log message with user input due date from asset" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+    <ui:LogMessage DisplayName="Log message with user input due date from asset" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">
@@ -143,7 +143,7 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:GetRobotAsset AssetName="str_emailPrimaryRecepient" CacheStrategy="None" DisplayName="Get email asset" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1" TimeoutMS="{x:Null}">
+    <ui:GetRobotAsset AssetName="str_emailPrimaryRecepient" CacheStrategy="None" DisplayName="Get email asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1" TimeoutMS="{x:Null}">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">
           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">
@@ -153,7 +153,7 @@
         </OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:LogMessage DisplayName="Log message with user input due date from asset" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace">
+    <ui:LogMessage DisplayName="Log message with user input due date from asset" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">
@@ -163,7 +163,22 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" Attachments="{x:Null}" Body="{x:Null}" ConnectionAccountName="{x:Null}" AttachmentInputMode="Builder" AttachmentPaths="{x:Null}" AuthScopesInvalid="False" Bcc="{x:Null}" Cc="{x:Null}" ConnectionId="ba510d9d-ba61-4444-93c1-9b98d8b2fc6d" ContinueOnError="{x:Null}" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="354,439" sap2010:WorkflowViewState.IdRef="SendEmailConnections_1" Importance="Normal" InputType="TEXT" ReplyTo="{x:Null}" SaveAsDraft="False" SingleAttachment="{x:Null}" Subject="Invoice Extraction Result Excel File" UseConnectionService="True">
+    <umab:SendMailX Account="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Subject="{x:Null}" To="{x:Null}" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="434,412" sap2010:WorkflowViewState.IdRef="SendMailX_4" Importance="Normal" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" UseDocumentAsBody="False">
+      <umab:SendMailX.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+      </umab:SendMailX.Files>
+      <umab:SendMailX.HtmlBodyFromFile>
+        <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+          <umabh:HtmlContentArgument.RuntimeImages>
+            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+          </umabh:HtmlContentArgument.RuntimeImages>
+          <umabh:HtmlContentArgument.ValueMappings>
+            <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+          </umabh:HtmlContentArgument.ValueMappings>
+        </umabh:HtmlContentArgument>
+      </umab:SendMailX.HtmlBodyFromFile>
+    </umab:SendMailX>
+    <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" Attachments="{x:Null}" Body="{x:Null}" ConnectionAccountName="{x:Null}" AttachmentInputMode="Builder" AttachmentPaths="{x:Null}" AuthScopesInvalid="False" Bcc="{x:Null}" Cc="{x:Null}" ConnectionId="ba510d9d-ba61-4444-93c1-9b98d8b2fc6d" ContinueOnError="{x:Null}" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="434,439" sap2010:WorkflowViewState.IdRef="SendEmailConnections_1" Importance="Normal" InputType="TEXT" ReplyTo="{x:Null}" SaveAsDraft="False" SingleAttachment="{x:Null}" Subject="Invoice Extraction Result Excel File" UseConnectionService="True">
       <uga:SendEmailConnections.ArgumentAttachments>
         <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
           <InArgument x:TypeArguments="upr:IResource">
@@ -195,7 +210,7 @@
       </uga:SendEmailConnections.InputTypeBackup>
       <uga:SendEmailConnections.TextBody>
         <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">"Result of invoice extraction with given due date (" + str_userInputDueDate + ") presented in attached excel file."</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">"Result of invoice extraction with given due date (" + str_userInputDueDate + ") presented in attached excel file."</CSharpValue>
         </InArgument>
       </uga:SendEmailConnections.TextBody>
       <uga:SendEmailConnections.To>
@@ -204,10 +219,10 @@
         </InArgument>
       </uga:SendEmailConnections.To>
     </uga:SendEmailConnections>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">"Email have been sent"</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">"Email has been sent"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>

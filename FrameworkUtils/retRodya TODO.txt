@@ -1,1 +1,5 @@
-1. dELETE OCR RESULTS BEFORE new process
+﻿dELETE OCR RESULTS BEFORE new process
+add error mailing in finals OR make try catch send result email (if exception send errror email sequence)
+add result mailng
+find way to input sender and recepient in email activity
+separate dispatcher and performer

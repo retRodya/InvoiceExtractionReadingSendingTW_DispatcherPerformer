@@ -5,7 +5,7 @@
     <x:Property Name="out_ds_invoiceDataExtractionScope" Type="OutArgument(sd:DataSet)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1227,2894</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1227,2979</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -134,13 +134,13 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="602,2829" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap:VirtualizedContainerService.HintSize="602,2914" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="OCRReading Sequence" sap:VirtualizedContainerService.HintSize="540,2741" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="OCRReading Sequence" sap:VirtualizedContainerService.HintSize="540,2826" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="str_textDD" />
         <Variable x:TypeArguments="p2:Document" Name="doc_objectModelDD" />
@@ -221,31 +221,13 @@
           </ActivityFunc>
         </p:DigitizeDocument.OCREngine>
       </p:DigitizeDocument>
-      <ui:CommentOut sap2010:Annotation.AnnotationText="too big message in output" DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="478,88" sap2010:WorkflowViewState.IdRef="CommentOut_6">
-        <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,252" sap2010:WorkflowViewState.IdRef="Sequence_11">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log digitalization result from a process" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Trace">
-              <ui:LogMessage.Message>
-                <InArgument x:TypeArguments="x:Object">
-                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">in_str_invoiceFilePath + " digitalizatied: " + str_textDD</CSharpValue>
-                </InArgument>
-              </ui:LogMessage.Message>
-            </ui:LogMessage>
-          </Sequence>
-        </ui:CommentOut.Body>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:CommentOut>
+      <ui:LogMessage DisplayName="Log file hase been digitalized" sap:VirtualizedContainerService.HintSize="478,173" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Trace">
+        <ui:LogMessage.Message>
+          <InArgument x:TypeArguments="x:Object">
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_102" xml:space="preserve">in_str_invoiceFileName + "  has been digitalized"</CSharpValue>
+          </InArgument>
+        </ui:LogMessage.Message>
+      </ui:LogMessage>
       <p3:ClassifyDocumentScope DisplayName="Classify Document Scope" sap:VirtualizedContainerService.HintSize="478,468" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIc833f2f807c54e638a061af61668a52d&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;NoGroup.NoCategory.invoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;NoGroup.NoCategory.invoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UIc833f2f807c54e638a061af61668a52d&quot;:&quot;0&quot;},&quot;DocumentTypesByPersistenceId&quot;:{&quot;UIc833f2f807c54e638a061af61668a52d&quot;:[]}}">
         <p3:ClassifyDocumentScope.ClassificationResults>
           <OutArgument x:TypeArguments="p4:ClassificationResult[]">
@@ -256,7 +238,7 @@
           </OutArgument>
         </p3:ClassifyDocumentScope.ClassificationResults>
         <p3:ClassifyDocumentScope.Classifiers>
-          <p3:KeywordBasedClassifier HumanValidatedData="{x:Null}" LearningData="{x:Null}" DisplayName="Keyword Based Classifier" sap:VirtualizedContainerService.HintSize="282,114" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_2" LearningFilePath="Data\\classifier2.json" PersistenceId="UIc833f2f807c54e638a061af61668a52d">
+          <p3:KeywordBasedClassifier HumanValidatedData="{x:Null}" LearningData="{x:Null}" DisplayName="Keyword Based Classifier" sap:VirtualizedContainerService.HintSize="282,114" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_2" LearningFilePath="Data\\classifier.json" PersistenceId="UIc833f2f807c54e638a061af61668a52d">
             <p3:KeywordBasedClassifier.ClassifierResult>
               <OutArgument x:TypeArguments="p5:ClassifierResult">
                 <DelegateArgumentReference x:TypeArguments="p5:ClassifierResult">
