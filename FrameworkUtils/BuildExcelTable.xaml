@@ -165,14 +165,14 @@
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
-      <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="388,148" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="Sheet1" WorkbookPath="Data\Temp\OCRExractionResult.xlsx">
+      <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="388,148" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="Sheet1" WorkbookPath="Data\Temp\OCRResultExcel.xlsx">
         <ui:WriteRange.DataTable>
           <InArgument x:TypeArguments="sd:DataTable">
             <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_92">dt_OCRExractionResult</CSharpValue>
           </InArgument>
         </ui:WriteRange.DataTable>
       </ui:WriteRange>
-      <ui:AppendRange DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="388,148" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="Data\Temp\OCRExractionResult.xlsx">
+      <ui:AppendRange DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="388,148" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="Data\Temp\OCRResultExcel.xlsx">
         <ui:AppendRange.DataTable>
           <InArgument x:TypeArguments="sd:DataTable">
             <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_93">dt_OCRExractionResult</CSharpValue>
