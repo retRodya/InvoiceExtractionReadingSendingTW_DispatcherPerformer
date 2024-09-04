@@ -7,6 +7,7 @@
     <x:Property Name="out_dt_OCRExractionResult" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_ds_invoiceDataExtractionScope" Type="InArgument(sd:DataSet)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dt_invoicesData" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <this:Process.in_str_invoiceFileName>
     <InArgument x:TypeArguments="x:String" />
@@ -210,6 +211,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_str_invoiceFileName">
           <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_96">str_invoiceFileName</CSharpValue>
         </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_finalResult" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
