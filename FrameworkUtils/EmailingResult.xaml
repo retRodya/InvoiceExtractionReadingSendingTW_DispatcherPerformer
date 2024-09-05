@@ -124,7 +124,10 @@
     <ui:LogMessage DisplayName="Log message in emailing sequence" sap:VirtualizedContainerService.HintSize="512,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">"In EmailingResult sequence"</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="x:Object" />
+            </CSharpValue.Result>"In EmailingResult sequence"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
@@ -141,10 +144,13 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="str_userInputDueDate" CacheStrategy="None" DisplayName="Get user input due date Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+        <ui:GetRobotAsset AssetName="str_userInputDueDate" CacheStrategy="None" DisplayName="Get user input due date Asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2" TimeoutMS="{x:Null}">
           <ui:GetRobotAsset.Value>
             <OutArgument x:TypeArguments="x:String">
-              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">str_userInputDueDate</CSharpReference>
+              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">
+                <CSharpReference.Result>
+                  <OutArgument x:TypeArguments="Location(x:String)" />
+                </CSharpReference.Result>str_userInputDueDate</CSharpReference>
             </OutArgument>
           </ui:GetRobotAsset.Value>
         </ui:GetRobotAsset>
@@ -166,7 +172,7 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="str_emailPrimaryRecepient" CacheStrategy="None" DisplayName="Get primary recepient email asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+        <ui:GetRobotAsset AssetName="str_emailPrimaryRecepient" CacheStrategy="None" DisplayName="Get primary recepient email asset" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1" TimeoutMS="{x:Null}">
           <ui:GetRobotAsset.Value>
             <OutArgument x:TypeArguments="x:String">
               <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">
@@ -197,12 +203,18 @@
         <ui:GetRobotCredential sap2010:Annotation.AnnotationText="gamil require 2stepAuth and special password for 3rd part apps" AssetName="cred_emailSenderAccount" CacheStrategy="None" DisplayName="Get cred_senderEmailAccount Credential" FolderPath="InvoiceExtractionTW_Dispatcher" sap:VirtualizedContainerService.HintSize="388,217" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" TimeoutMS="{x:Null}">
           <ui:GetRobotCredential.Password>
             <OutArgument x:TypeArguments="ss:SecureString">
-              <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">ss_emailSenderPassword</CSharpReference>
+              <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">
+                <CSharpReference.Result>
+                  <OutArgument x:TypeArguments="Location(ss:SecureString)" />
+                </CSharpReference.Result>ss_emailSenderPassword</CSharpReference>
             </OutArgument>
           </ui:GetRobotCredential.Password>
           <ui:GetRobotCredential.Username>
             <OutArgument x:TypeArguments="x:String">
-              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">str_emailSenderUsername</CSharpReference>
+              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">
+                <CSharpReference.Result>
+                  <OutArgument x:TypeArguments="Location(x:String)" />
+                </CSharpReference.Result>str_emailSenderUsername</CSharpReference>
             </OutArgument>
           </ui:GetRobotCredential.Username>
           <sap:WorkflowViewStateService.ViewState>
@@ -214,50 +226,71 @@
         <ui:LogMessage DisplayName="Log message with received email credentials" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace">
           <ui:LogMessage.Message>
             <InArgument x:TypeArguments="x:Object">
-              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">"cred_senderEmailAccount recived: " + str_emailSenderUsername + " " + ss_emailSenderPassword</CSharpValue>
+              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">
+                <CSharpValue.Result>
+                  <OutArgument x:TypeArguments="x:Object" />
+                </CSharpValue.Result>"cred_senderEmailAccount recived: " + str_emailSenderUsername + " " + ss_emailSenderPassword</CSharpValue>
             </InArgument>
           </ui:LogMessage.Message>
         </ui:LogMessage>
       </Sequence>
     </Sequence>
-    <ui:SendMail Password="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send SMTP Mail result Message" EnableSSL="True" sap:VirtualizedContainerService.HintSize="512,184" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" MailMessage="{x:Null}" Name="{x:Null}" Port="465" ReplyTo="{x:Null}" Result="{x:Null}" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Invoice Extraction Result in Excel File" TimeoutMS="{x:Null}" UseOAuth="{x:Null}">
+    <ui:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send SMTP Mail result Message" EnableSSL="True" sap:VirtualizedContainerService.HintSize="512,184" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="465" ReplyTo="{x:Null}" Result="{x:Null}" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Invoice Extraction Result in Excel File" TimeoutMS="{x:Null}" UseOAuth="{x:Null}">
       <ui:SendMail.Body>
         <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">"Result of invoice extraction with given due date (" + str_userInputDueDate + ") presented in attached excel file."</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </CSharpValue.Result>"Result of invoice extraction with given due date (" + str_userInputDueDate + ") presented in attached excel file."</CSharpValue>
         </InArgument>
       </ui:SendMail.Body>
       <ui:SendMail.Email>
         <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">str_emailSenderUsername</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </CSharpValue.Result>str_emailSenderUsername</CSharpValue>
         </InArgument>
       </ui:SendMail.Email>
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">
-            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">Path.Combine(Environment.CurrentDirectory, "Data", "Temp", "OCRResultExcel.xlsx")</CSharpValue>
+            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">Path.Combine(Environment.CurrentDirectory, "Data", "Temp", "dt_finalResult.xlsx")</CSharpValue>
           </InArgument>
         </scg:List>
       </ui:SendMail.Files>
       <ui:SendMail.From>
         <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">str_emailSenderUsername</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </CSharpValue.Result>str_emailSenderUsername</CSharpValue>
         </InArgument>
       </ui:SendMail.From>
       <ui:SendMail.SecurePassword>
         <InArgument x:TypeArguments="ss:SecureString">
-          <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">ss_emailSenderPassword</CSharpValue>
+          <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="ss:SecureString" />
+            </CSharpValue.Result>ss_emailSenderPassword</CSharpValue>
         </InArgument>
       </ui:SendMail.SecurePassword>
       <ui:SendMail.To>
         <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">str_emailPrimaryRecepient</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </CSharpValue.Result>str_emailPrimaryRecepient</CSharpValue>
         </InArgument>
       </ui:SendMail.To>
     </ui:SendMail>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="512,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">"Email with result has been sent"</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">
+            <CSharpValue.Result>
+              <OutArgument x:TypeArguments="x:Object" />
+            </CSharpValue.Result>"Email with result has been sent"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
